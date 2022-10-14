@@ -2,8 +2,7 @@
 import './card.css';
 
 // Functional component
-const Card = (props) => {
-    const { id, name, email } = props.monster
+const Card = ({ monster: { id, name, email } }) => {
     return (
         <div className={` card-container `}>
             <img
