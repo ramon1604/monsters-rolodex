@@ -3,8 +3,7 @@ import Card from "../card/card";
 import './card-list.css';
 
 // Functional component
-const CardList = (props) => {
-    const { monsters } = props
+const CardList = ({ monsters }) => {
     return (
         <div className={` card-list `}>
             {monsters.map((monster, index) => (

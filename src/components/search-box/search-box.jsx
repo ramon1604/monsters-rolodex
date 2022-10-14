@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"; // Functional component
 import './search-box.css';
 
 // Functional Component
-const SearchBox = (props) => {
+const SearchBox = ({placeholder, onChange}) => {
     const [inputObj, setInputObj] = useState('')
 
     useEffect(() => {
@@ -16,8 +16,8 @@ const SearchBox = (props) => {
                 ref={ele => setInputObj(ele)}
                 className={` search-box `}
                 type="search"
-                placeholder={props.placeholder}
-                onChange={props.onChange}
+                placeholder={placeholder}
+                onChange={onChange}
             />
         </div>
     )
