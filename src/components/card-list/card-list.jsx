@@ -3,18 +3,16 @@ import Card from "../card/card";
 import './card-list.css';
 
 // Functional component
-const CardList = ({ monsters }) => {
-    return (
-        <div className={` card-list `}>
-            {monsters.map((monster, index) => (
-                <Card
-                    key={index}
-                    monster={monster}
-                />
-            ))}
-        </div>
-    )
-}
+const CardList = ({ monsters }) => (
+    <div className={` card-list `}>
+        {monsters.map((monster, index) => (
+            <Card
+                key={index}
+                monster={monster}
+            />
+        ))}
+    </div>
+)
 
 /* 
 // Class component
