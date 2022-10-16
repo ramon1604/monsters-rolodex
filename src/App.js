@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // Functional component 
+import React, { useState, useEffect, useRef } from "react"; // Functional component 
 //import React, { Component } from "react"; // Class component 
 import './App.css';
 import CardList from "./components/card-list/card-list";
@@ -6,23 +6,20 @@ import SearchBox from "./components/search-box/search-box";
 
 // Functional component
 const App = () => {
-  const [monsters, setMonsters] = useState([])
+  const monsters = useRef([])
   const [filteredMonsters, setFilteredMonsters] = useState([])
-  const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(data => {
-        setMonsters(data)
+        monsters.current = data
         setFilteredMonsters(data)
       })
   }, [])
-
+  
   const onSearchInput = async (e) => {
-    await setSearchInput(e.target.value)
-    await setFilteredMonsters(monsters.filter(monster => monster.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())))
-    if (searchInput){}
+    await setFilteredMonsters(monsters.current.filter(monster => monster.name.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase())))
   }
 
   return (
