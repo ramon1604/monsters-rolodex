@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from "react"; // Functional component
 //import React, { Component } from "react"; // Class component
 import './search-box.css';
 
 // Functional Component
-const SearchBox = ({placeholder, onChange}) => {
-    const [inputObj, setInputObj] = useState('')
-
-    useEffect(() => {
-        if (typeof (inputObj) === 'object') inputObj.focus()
-    }, [inputObj])
-
+const SearchBox = ({ placeholder, onChange }) => {
+    const inputBox = ele => { if (ele != null)  ele.focus() }
     return (
         <div>
             <input
-                ref={ele => setInputObj(ele)}
+                ref={inputBox}
                 className={` search-box `}
                 type="search"
                 placeholder={placeholder}
